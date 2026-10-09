@@ -338,10 +338,10 @@ Photos may be rotated by 2–4° in the hero only. Rotated photos anywhere else 
 ## Components
 
 - **Buttons:** `button-primary` is clay with white text, used once or twice per section at most. `button-ghost-dark` is the secondary action on dark grounds, with a 1px #6B5646 border. `button-light` is the sand pill in the nav. All buttons press to `scale(0.97)`.
-- **Hero:** five landscape layers (`landscape-far`, `landscape-mid`, `landscape-ground` plus sky and sun), five floating fig leaves (`floating-leaf`, `floating-leaf-dry`), then the copy block (`hero-eyebrow`, `hero` display line, `hero-lede`) and a two-photo stack with a small sand pill label.
+- **Hero:** five landscape layers (`landscape-far`, `landscape-mid`, `landscape-ground` plus sky and sun), five floating fig leaves (`floating-leaf`, `floating-leaf-dry`), then the copy block (`hero-eyebrow`, `hero` display line, `hero-lede`) and a two-photo stack. The sun sits behind the copy on the left, so its disc is a low-opacity glow there rather than solid.
 - **Distance strip:** four columns, each with a `distance-figure` numeral, a place name and a caption. It's the site's "features" row, made from real geography instead of icons.
 - **Amenity row:** an inline stroke icon in `fig-ink`, a 600-weight title and a 14px caption, ruled by `divider-sand`.
-- **Rate row:** the label on the left and a `price` numeral on the right, ruled.
+- **Rates:** prices are not published on the site. The section says breakfast is included and points guests to the enquiry form for a quote.
 - **Note card:** `sand-deep`, used for check-in, check-out, laundry and dinner rules.
 - **Chip:** an outlined pill on dusk for breakfast items. It's not interactive.
 - **Enquiry form:** a `form-panel` holding `input` fields with visible labels above them (never placeholder-only), a 2px `sun` focus ring, and `input-error` text below the field.

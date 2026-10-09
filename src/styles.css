@@ -347,6 +347,28 @@ a {
   .leaf__drift { animation: none; }
 }
 
+/* Scroll reveal: a short rise and fade the first time a block enters view, staggered by --i. */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    transition: opacity 300ms ease;
+  }
+}
+
 /* ── Header ────────────────────────────────────────────────────── */
 
 .header {
@@ -453,10 +475,10 @@ a {
 .landscape__sun {
   position: absolute;
   left: 50%;
-  top: 120px;
+  top: 20px;
   width: 760px;
   height: 760px;
-  margin-left: -60px;
+  margin-left: -730px;
 }
 
 .landscape__ridge {
@@ -565,26 +587,12 @@ a {
   border: 6px solid var(--on-dark);
 }
 
-.hero__tag {
-  position: absolute;
-  right: 8%;
-  bottom: 60px;
-  padding: 8px 14px;
-  border-radius: var(--r-pill);
-  background: var(--on-dark);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  rotate: 3deg;
-}
-
 @media (max-width: 720px) {
   .hero__body { padding-bottom: 180px; gap: 40px; }
   .hero__photos { height: 340px; }
   .hero__photo--main { height: 220px; }
   .hero__photo--inset { height: 170px; }
-  .hero__tag { bottom: 24px; }
-  .landscape__sun { width: 520px; height: 520px; top: auto; bottom: 40px; margin-left: -200px; }
+  .landscape__sun { width: 520px; height: 520px; top: 120px; margin-left: -260px; }
 }
 
 /* ── Route strip ───────────────────────────────────────────────── */
@@ -617,7 +625,6 @@ a {
 }
 
 .route__name { font-weight: 600; }
-.route__note { font-size: 14px; color: var(--on-dark-mute); }
 
 /* ── Welcome ───────────────────────────────────────────────────── */
 
@@ -722,25 +729,19 @@ a {
 
 .garden__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  grid-auto-rows: 240px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--gutter);
 }
 
-.garden__photo--tall {
-  grid-row: span 2;
-}
+/* The photos are all close to square, so the tiles are too: nothing gets stretched or cropped hard. */
+.garden__photo { aspect-ratio: 8 / 7; }
 
-/* Desktop: a fixed 4×2 mosaic with no empty cells. */
-@media (min-width: 1000px) {
-  .garden__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .garden__photo:nth-child(2),
-  .garden__photo:nth-child(5) { grid-column: span 2; }
+@media (min-width: 900px) {
+  .garden__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 600px) {
-  .garden__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 170px; gap: 10px; }
-  .garden__photo:last-child { grid-column: span 2; }
+  .garden__grid { gap: 10px; }
   .rooms__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .rooms__photo { height: 230px; }
 }
@@ -756,36 +757,11 @@ a {
   min-width: 0;
 }
 
-.rates__tables {
+.rates__quote {
   flex: 2 1 560px;
   min-width: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  column-gap: 48px;
-  row-gap: 32px;
+  max-width: 640px;
 }
-
-.rates__heading {
-  padding-bottom: 12px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-.rate {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding-block: 18px;
-  border-top: 1px solid var(--sand-line);
-}
-
-.rate dt { font-size: 18px; }
-.rate dd { font: 400 36px/1 var(--serif); font-variant-numeric: lining-nums tabular-nums; }
-.rate__currency { font-size: 20px; color: var(--ink-mute); }
 
 .notes {
   display: grid;

@@ -1,5 +1,6 @@
 import { useId, useState, type FormEvent, type InputHTMLAttributes } from 'react'
 import { contact } from '../content'
+import { stagger } from '../hooks/reveal'
 import { Icon } from './Icon'
 
 type Fields = {
@@ -96,7 +97,7 @@ function EnquiryForm() {
   )
 
   return (
-    <form className="enquiry" onSubmit={onSubmit} noValidate>
+    <form className="enquiry reveal" style={stagger(1)} onSubmit={onSubmit} noValidate>
       <h3 className="enquiry__title">Send an enquiry</h3>
       {field('name', 'Your name', { type: 'text', autoComplete: 'name' }, true)}
       {field('email', 'Email', { type: 'email', autoComplete: 'email' })}
@@ -139,7 +140,7 @@ export function Book() {
   return (
     <section id="book" className="section section--night" aria-labelledby="book-title">
       <div className="wrap duo duo--book">
-        <div className="duo__text stack-md">
+        <div className="duo__text stack-md reveal">
           <p className="eyebrow eyebrow--sun">Find us · Book</p>
           <h2 id="book-title" className="headline-lg">
             Your stop on the road south.
